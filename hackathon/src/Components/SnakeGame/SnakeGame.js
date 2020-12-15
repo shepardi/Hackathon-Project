@@ -1,7 +1,7 @@
 import React from 'react'
 import './SnakeGame.css'
 import GameOver from './GameOver.js'
-import {CirclePicker} from 'react-color'
+import {GithubPicker} from 'react-color'
 
 class SnakeGame extends React.Component {
   constructor(props) {
@@ -22,8 +22,8 @@ class SnakeGame extends React.Component {
       direction: 'right',
       directionChanged: false,
       isGameOver: false,
-      snakeColor: ''|| this.getRandomColor(),
-      appleColor: '' || this.getRandomColor(),
+      snakeColor: '#B80000',
+      appleColor: '#B80000' ,
       score: 0,
       highScore: Number(localStorage.getItem('snakeHighScore')) || 0,
       newHighScore: false,
@@ -147,18 +147,9 @@ class SnakeGame extends React.Component {
       directionChanged: false,
       isGameOver: false,
       gameLoopTimeout: 50,
-      snakeColor: this.getRandomColor(),
-      appleColor: this.getRandomColor(),
       score: 0,
       newHighScore: false,
     })
-  }
-
-  getRandomColor() {
-    let hexa = '0123456789ABCDEF'
-    let color = '#'
-    for (let i = 0; i < 6; i++) color += hexa[Math.floor(Math.random() * 16)]
-    return color
   }
 
   moveSnake() {
@@ -372,13 +363,29 @@ class SnakeGame extends React.Component {
     // Game over
     if (this.state.isGameOver) {
       return (
-        <GameOver
-          width={this.state.width}
-          height={this.state.height}
-          highScore={this.state.highScore}
-          newHighScore={this.state.newHighScore}
-          score={this.state.score}
-        />
+        <div>
+          <div className='color-picker'>
+          <div id='colors-1'>
+            <h3>Apple Color</h3>
+            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor}/>
+          </div>
+          <div id='colors-2'>
+            <h3>Snake Color</h3>
+            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor}/>
+          </div>
+        </div>
+          <div>
+            <GameOver
+              width={this.state.width}
+              height={this.state.height}
+              highScore={this.state.highScore}
+              newHighScore={this.state.newHighScore}
+              score={this.state.score}
+          />
+          </div>
+        </div>
+
+        
       )
     }
 
@@ -387,11 +394,11 @@ class SnakeGame extends React.Component {
         <div className='color-picker'>
           <div id='colors-1'>
             <h3>Apple Color</h3>
-            <CirclePicker onChangeComplete={this.handleAppleColor}/>
+            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor}/>
           </div>
           <div id='colors-2'>
             <h3>Snake Color</h3>
-            <CirclePicker onChangeComplete={this.handleSnakeColor}/>
+            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor}/>
           </div>
         </div>
         <div
