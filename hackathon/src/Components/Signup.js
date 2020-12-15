@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './SignupAndSignin.css';
-const createUrl = `https://backend-social-2021.herokuapp.com/`;
+const createUrl = `https://backend-social-2021.herokuapp.com/create`;
 function Signup(props) {
 	const [info, setInfo] = useState({
 		name: '',
@@ -12,7 +12,13 @@ function Signup(props) {
 	const [wrongInput, setWrongInput] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 	const [confirmPassword, setConfirmPassword] = useState('');
-	const [valid, setValid] = useState(true);
+    const [valid, setValid] = useState(true);
+    
+    const data = new FormData();
+    data.append("name", info.name);
+    data.append('username', info.username);
+    data.append('password', info.password);
+
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -22,16 +28,13 @@ function Signup(props) {
 				setValid(true);
 				fetch(createUrl, {
 					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(info),
+					body: data,
 				})
-					.then((res) => res.json())
+					.then((res) => res.json()).then((res)=>{
+                        console.log(res)
+                    })
 					.catch((error) => {
-						if(error){
-                            setWrongInput(true)
-                        }
+                        console.log(error)
 					});
 			}
 		} else {
@@ -42,11 +45,11 @@ function Signup(props) {
 	const handleChange = (event) => {
 		let id = event.target.id;
 		let value = event.target.value;
-		if (id === 'email') {
+		if (id === 'username') {
 			setInfo({ name: info.name, username: value, password: info.password });
 		} else if (id === 'password') {
 			setInfo({ name: info.name, username: info.username, password: value });
-		} else if (id === 'username') {
+		} else if (id === 'name') {
 			setInfo({
 				name: value,
 				username: info.username,
@@ -66,16 +69,16 @@ function Signup(props) {
 				<input
 					className='control'
 					type='text'
-					id='username'
-					placeholder='User Name'
+					id='name'
+					placeholder='Name'
 					value={info.name || ''} //because it displayed an uncontrolled error
 					onChange={handleChange}
 				/>
 				<input
 					className='control'
 					type='text'
-					id='email'
-					placeholder='Email'
+					id='username'
+					placeholder='User Name'
 					value={info.username || ''}
 					onChange={handleChange}
 				/>
