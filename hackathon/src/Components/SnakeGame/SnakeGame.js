@@ -317,18 +317,22 @@ class SnakeGame extends React.Component {
     switch (event.keyCode) {
       case 37:
       case 65:
+        event.preventDefault()
         this.goLeft()
         break
       case 38:
       case 87:
+        event.preventDefault()
         this.goUp()
         break
       case 39:
       case 68:
+        event.preventDefault()
         this.goRight()
         break
       case 40:
       case 83:
+        event.preventDefault()
         this.goDown()
         break
       default:
@@ -380,47 +384,48 @@ class SnakeGame extends React.Component {
 
     return (
       <div>
+
         <h3>Apple Color</h3>
         <CirclePicker onChangeComplete={this.handleAppleColor}/>
         <h3>Snake Color</h3>
         <CirclePicker onChangeComplete={this.handleSnakeColor}/>
-      <div
-        id='GameBoard'
-        style={{
-          width: this.state.width,
-          height: this.state.height,
-
-        }}>
-        {this.state.snake.map((snakePart, index) => {
-          return (
-            <div
-              key={index}
-              className='Block'
-              style={{
-                width: this.state.blockWidth,
-                height: this.state.blockHeight,
-                left: snakePart.Xpos-3,
-                top: snakePart.Ypos-3,
-                background: this.state.snakeColor,
-              }}
-            />
-          )
-        })}
         <div
-          className='Block'
+          id='GameBoard'
           style={{
-            width: this.state.blockWidth,
-            height: this.state.blockHeight,
-            left: this.state.apple.Xpos-3,
-            top: this.state.apple.Ypos-3,
-            background: this.state.appleColor,
-          }}
-        />
-        <div id='Score' style={{ fontSize: this.state.width / 20 }}>
-          HIGH-SCORE: {this.state.highScore}&ensp;&ensp;&ensp;&ensp;SCORE:{' '}
-          {this.state.score}
+            width: this.state.width,
+            height: this.state.height,
+
+          }}>
+          {this.state.snake.map((snakePart, index) => {
+            return (
+              <div
+                key={index}
+                className='Block'
+                style={{
+                  width: this.state.blockWidth,
+                  height: this.state.blockHeight,
+                  left: snakePart.Xpos-3,
+                  top: snakePart.Ypos-3,
+                  background: this.state.snakeColor,
+                }}
+              />
+            )
+          })}
+          <div
+            className='Block'
+            style={{
+              width: this.state.blockWidth,
+              height: this.state.blockHeight,
+              left: this.state.apple.Xpos-3,
+              top: this.state.apple.Ypos-3,
+              background: this.state.appleColor,
+            }}
+          />
+          <div id='Score' style={{ fontSize: this.state.width / 20 }}>
+            HIGH-SCORE: {this.state.highScore}&ensp;&ensp;&ensp;&ensp;SCORE:{' '}
+            {this.state.score}
+          </div>
         </div>
-      </div>
 
       </div>
       
