@@ -4,6 +4,7 @@ import NavigationBar from './Components/NavigationBar';
 import Home from './Components/Home';
 import Signup from './Components/Signup';
 import Signin from './Components/Signin';
+import SnakeGame from './Components/SnakeGame/SnakeGame.js';
 
 
 function App() {
@@ -31,6 +32,12 @@ function App() {
 				render={() => {
 					return <Signin setLoggedIn setUsername/>;
 				}}
+        />
+      <Route
+        path='/play'
+        render={() => {
+          return <SnakeGame />;
+        }}
 			/>
 		</div>
 	);
