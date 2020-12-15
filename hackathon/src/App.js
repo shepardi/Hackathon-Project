@@ -16,7 +16,8 @@ function App() {
 		<div className='App'>
 			<NavigationBar />
 			<Route
-				path='/homeswwswsws'
+        path='/'
+        exact
 				render={() => {
 					return <Home />;
 				}}

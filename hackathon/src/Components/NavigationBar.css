@@ -1,0 +1,12 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: #C4C4C4;
+}
+.searchBox{
+    padding: 7px;
+    border-radius: 20px;
+    border:none;
+    width: 60%;
+    height: 30px;
+}
