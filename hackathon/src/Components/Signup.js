@@ -29,22 +29,14 @@ function Signup(props) {
 				})
 					.then((res) => res.json())
 					.catch((error) => {
-						console.log(error);
+						if(error){
+                            setWrongInput(true)
+                        }
 					});
 			}
 		} else {
 			setValid(false);
 		}
-	};
-	const handleCancel = (event) => {
-		event.preventDefault();
-		setInfo({
-			name: '',
-			email: '',
-			password: '',
-		});
-		setConfirmPassword('');
-		setValid(false);
 	};
 
 	const handleChange = (event) => {
