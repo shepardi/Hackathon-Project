@@ -16,7 +16,7 @@ function App() {
 		<div className='App'>
 			<NavigationBar />
 			<Route
-				path='/'
+				path='/homeswwswsws'
 				render={() => {
 					return <Home />;
 				}}
