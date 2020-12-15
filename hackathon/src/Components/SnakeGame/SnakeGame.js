@@ -38,7 +38,7 @@ class SnakeGame extends React.Component {
 
   initGame() {
     // Game size initialization
-    let percentageWidth = this.props.percentageWidth || 40
+    let percentageWidth = this.props.percentageWidth || 50
     let width =
       document.getElementById('GameBoard').parentElement.offsetWidth *
       (percentageWidth / 100)
@@ -384,11 +384,16 @@ class SnakeGame extends React.Component {
 
     return (
       <div>
-
-        <h3>Apple Color</h3>
-        <CirclePicker onChangeComplete={this.handleAppleColor}/>
-        <h3>Snake Color</h3>
-        <CirclePicker onChangeComplete={this.handleSnakeColor}/>
+        <div className='color-picker'>
+          <div id='colors-1'>
+            <h3>Apple Color</h3>
+            <CirclePicker onChangeComplete={this.handleAppleColor}/>
+          </div>
+          <div id='colors-2'>
+            <h3>Snake Color</h3>
+            <CirclePicker onChangeComplete={this.handleSnakeColor}/>
+          </div>
+        </div>
         <div
           id='GameBoard'
           style={{
