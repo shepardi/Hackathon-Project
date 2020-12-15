@@ -6,7 +6,7 @@ const createUrl = `https://backend-social-2021.herokuapp.com/`;
 function Signup(props) {
 	const [info, setInfo] = useState({
 		name: '',
-		email: '',
+		username: '',
 		password: '',
 	});
 	const [wrongInput, setWrongInput] = useState(false);
@@ -84,7 +84,7 @@ function Signup(props) {
 					type='text'
 					id='email'
 					placeholder='Email'
-					value={info.email || ''}
+					value={info.username || ''}
 					onChange={handleChange}
 				/>
 				<input
