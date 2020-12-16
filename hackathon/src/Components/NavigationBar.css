@@ -3,6 +3,7 @@
     justify-content: space-between;
     background-color: #C4C4C4;
     align-items: center;
+    width: 100%;
 }
 .searchBox{
     padding: 7px;
@@ -42,5 +43,11 @@
 @media (max-width: 600px) {
 	.signupButton{
         margin-top: 20px;
+        margin-left: 0px;
+        align-self: center;
+    }
+    .searchBox{
+        width: 80%;
+        align-self: center;
     }
 }

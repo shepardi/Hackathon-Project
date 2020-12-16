@@ -35,6 +35,7 @@ function Signup({ setLoggedIn, setUsername }) {
 						setUsername(res.username);
 						if (res.username) {
 							setLoggedIn(true);
+							window.location.replace('/');
 						}
 					})
 					.catch((error) => {
