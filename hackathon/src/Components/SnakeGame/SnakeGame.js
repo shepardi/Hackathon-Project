@@ -3,6 +3,8 @@ import './SnakeGame.css'
 import GameOver from './GameOver.js'
 import { GithubPicker } from 'react-color'
 
+const scoreURL = `https://backend-social-2021.herokuapp.com/highscore`
+
 class SnakeGame extends React.Component {
   constructor(props) {
     super(props)
@@ -106,6 +108,11 @@ class SnakeGame extends React.Component {
   }
 
   resetGame() {
+    if(this.state.score > this.state.highScore){
+      
+    }
+
+
     let width = this.state.width
     let height = this.state.height
     let blockWidth = this.state.blockWidth
@@ -210,6 +217,8 @@ class SnakeGame extends React.Component {
         highScore++
         localStorage.setItem('snakeHighScore', highScore)
         newHighScore = true
+
+
       }
 
       // decrease the game loop timeout
