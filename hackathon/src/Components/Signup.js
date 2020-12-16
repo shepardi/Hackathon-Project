@@ -3,7 +3,7 @@ import { Container, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './SignupAndSignin.css';
 const createUrl = `https://backend-social-2021.herokuapp.com/create`;
-function Signup(props) {
+function Signup({ setLoggedIn, setUsername }) {
 	const [info, setInfo] = useState({
 		name: '',
 		username: '',
@@ -12,13 +12,12 @@ function Signup(props) {
 	const [wrongInput, setWrongInput] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 	const [confirmPassword, setConfirmPassword] = useState('');
-    const [valid, setValid] = useState(true);
-    
-    const data = new FormData();
-    data.append("name", info.name);
-    data.append('username', info.username);
-    data.append('password', info.password);
+	const [valid, setValid] = useState(true);
 
+	const data = new FormData();
+	data.append('name', info.name);
+	data.append('username', info.username);
+	data.append('password', info.password);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -30,11 +29,19 @@ function Signup(props) {
 					method: 'POST',
 					body: data,
 				})
-					.then((res) => res.json()).then((res)=>{
-                        console.log(res)
-                    })
+					.then((res) => res.json())
+					.then((res) => {
+						localStorage.setItem('username', res.username);
+						setUsername(res.username);
+						if (res.username) {
+							setLoggedIn(true);
+						}
+					})
 					.catch((error) => {
-                        console.log(error)
+						if (error) {
+							console.log(error);
+							setLoggedIn(false);
+						}
 					});
 			}
 		} else {
