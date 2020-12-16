@@ -28,13 +28,13 @@ class SnakeGame extends React.Component {
       score: 0,
       highScore: Number(localStorage.getItem("snakeHighScore")) || 0,
       newHighScore: false,
+      pause: true,
     };
   }
 
   componentDidMount() {
     this.initGame();
     window.addEventListener("keydown", this.handleKeyDown);
-    this.gameLoop();
   }
 
   initGame() {
@@ -88,17 +88,29 @@ class SnakeGame extends React.Component {
 
   gameLoop() {
     let timeoutId = setTimeout(() => {
+      if(this.state.pause === true){
+        return
+      }
       if (!this.state.isGameOver) {
         this.moveSnake();
         this.tryToEatSnake();
         this.tryToEatApple();
         this.setState({ directionChanged: false });
       }
-
       this.gameLoop();
     }, this.state.gameLoopTimeout);
 
     this.setState({ timeoutId });
+  }
+
+  handleGameLoop(event){
+    if(this.state.pause === true){
+      this.gameLoop();
+      this.setState({pause: false})
+    }else{
+      this.setState({pause: true})
+    }
+    console.log(event);
   }
 
   componentWillUnmount() {
@@ -310,28 +322,37 @@ class SnakeGame extends React.Component {
 
     switch (event.keyCode) {
       case 37:
-      case 65:
         event.preventDefault();
         this.goLeft();
         break;
+      case 65:
+        this.goLeft();
+        break;
       case 38:
-      case 87:
         event.preventDefault();
         this.goUp();
         break;
+      case 87:
+        this.goUp();
+        break;
       case 39:
-      case 68:
         event.preventDefault();
         this.goRight();
         break;
+      case 68:
+        this.goRight();
+        break;
       case 40:
-      case 83:
         event.preventDefault();
+        this.goDown();
+        break
+      case 83:
         this.goDown();
         break;
       default:
     }
     this.setState({ directionChanged: true });
+    console.log(event.keyCode);
   }
 
   goLeft() {
@@ -418,7 +439,9 @@ class SnakeGame extends React.Component {
           style={{
             width: this.state.width,
             height: this.state.height,
+            backgroundColor: 'white'
           }}
+          onClick = {(event) => this.handleGameLoop(event)}
         >
           {this.state.snake.map((snakePart, index) => {
             return (
