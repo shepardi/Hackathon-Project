@@ -1,0 +1,33 @@
+body {
+  background-color: green;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(to top right, #eba426, #ff3468);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.game {
+  height: 20%;
+}
+
+.leaderboard {
+  position: relative;
+  width: 100vw;
+  margin-top: 40px;
+  margin-right: 40px;
+  float: right;
+}
+a {
+  color: black !important;
+}
