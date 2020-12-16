@@ -22,7 +22,7 @@ function App() {
 				setSearchValue={setSearchValue}
 				setFoundUser={setFoundUser}
 			/>
-			<FoundUser searchValue={searchValue} setSearchValue={setSearchValue} foundUser={foundUser}/>
+			<FoundUser searchValue={searchValue} setSearchValue={setSearchValue} foundUser={foundUser} />
 			<Route
 				path='/'
 				exact

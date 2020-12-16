@@ -1,8 +1,17 @@
+<<<<<<< HEAD
 import React from "react";
 import "./SnakeGame.css";
 import GameOver from "./GameOver.js";
 import { GithubPicker } from "react-color";
 import LeaderBoard from "../LeaderBoard";
+=======
+import React from 'react'
+import './SnakeGame.css'
+import GameOver from './GameOver.js'
+import { GithubPicker } from 'react-color'
+
+const scoreURL = `https://backend-social-2021.herokuapp.com/highscore`
+>>>>>>> 978c64e019669147135a7be517d85099c3cb6aa1
 
 class SnakeGame extends React.Component {
   constructor(props) {
@@ -23,8 +32,13 @@ class SnakeGame extends React.Component {
       direction: "right",
       directionChanged: false,
       isGameOver: false,
+<<<<<<< HEAD
       snakeColor: "#B80000",
       appleColor: "#B80000",
+=======
+      snakeColor: '#B80000',
+      appleColor: '#B80000',
+>>>>>>> 978c64e019669147135a7be517d85099c3cb6aa1
       score: 0,
       highScore: Number(localStorage.getItem("snakeHighScore")) || 0,
       newHighScore: false,
@@ -39,7 +53,11 @@ class SnakeGame extends React.Component {
 
   initGame() {
     // Game size initialization
+<<<<<<< HEAD
     let percentageWidth = this.props.percentageWidth || 50;
+=======
+    let percentageWidth = this.props.percentageWidth || 40
+>>>>>>> 978c64e019669147135a7be517d85099c3cb6aa1
     let width =
       document.getElementById("GameBoard").parentElement.offsetWidth *
       (percentageWidth / 100);
@@ -107,11 +125,24 @@ class SnakeGame extends React.Component {
   }
 
   resetGame() {
+<<<<<<< HEAD
     let width = this.state.width;
     let height = this.state.height;
     let blockWidth = this.state.blockWidth;
     let blockHeight = this.state.blockHeight;
     let apple = this.state.apple;
+=======
+    if(this.state.score > this.state.highScore){
+      
+    }
+
+
+    let width = this.state.width
+    let height = this.state.height
+    let blockWidth = this.state.blockWidth
+    let blockHeight = this.state.blockHeight
+    let apple = this.state.apple
+>>>>>>> 978c64e019669147135a7be517d85099c3cb6aa1
 
     // snake reset
     let snake = [];
@@ -208,9 +239,17 @@ class SnakeGame extends React.Component {
 
       // increment high score if needed
       if (this.state.score === highScore) {
+<<<<<<< HEAD
         highScore++;
         localStorage.setItem("snakeHighScore", highScore);
         newHighScore = true;
+=======
+        highScore++
+        localStorage.setItem('snakeHighScore', highScore)
+        newHighScore = true
+
+
+>>>>>>> 978c64e019669147135a7be517d85099c3cb6aa1
       }
 
       // decrease the game loop timeout
@@ -353,18 +392,28 @@ class SnakeGame extends React.Component {
   }
 
   handleAppleColor = (color, event) => {
+<<<<<<< HEAD
     this.setState({ appleColor: color.hex });
   };
 
   handleSnakeColor = (color, event) => {
     this.setState({ snakeColor: color.hex });
   };
+=======
+    this.setState({ appleColor: color.hex })
+  }
+
+  handleSnakeColor = (color, event) => {
+    this.setState({ snakeColor: color.hex })
+  }
+>>>>>>> 978c64e019669147135a7be517d85099c3cb6aa1
 
   render() {
     // Game over
     if (this.state.isGameOver) {
       return (
         <div>
+<<<<<<< HEAD
           <div className="color-picker">
             <div id="colors-1">
               <h3>Apple Color</h3>
@@ -381,6 +430,16 @@ class SnakeGame extends React.Component {
                 width="212px"
                 onChangeComplete={this.handleSnakeColor}
               />
+=======
+          <div className='color-picker'>
+            <div id='colors-1'>
+              <h3>Apple Color</h3>
+              <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor} />
+            </div>
+            <div id='colors-2'>
+              <h3>Snake Color</h3>
+              <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor} />
+>>>>>>> 978c64e019669147135a7be517d85099c3cb6aa1
             </div>
           </div>
           <div>
@@ -393,7 +452,13 @@ class SnakeGame extends React.Component {
             />
           </div>
         </div>
+<<<<<<< HEAD
       );
+=======
+
+
+      )
+>>>>>>> 978c64e019669147135a7be517d85099c3cb6aa1
     }
 
     return (
@@ -401,19 +466,27 @@ class SnakeGame extends React.Component {
         <div className="color-picker">
           <div id="colors-1">
             <h3>Apple Color</h3>
+<<<<<<< HEAD
             <GithubPicker
               triangle="hide"
               width="212px"
               onChangeComplete={this.handleAppleColor}
             />
+=======
+            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor} />
+>>>>>>> 978c64e019669147135a7be517d85099c3cb6aa1
           </div>
           <div id="colors-2">
             <h3>Snake Color</h3>
+<<<<<<< HEAD
             <GithubPicker
               triangle="hide"
               width="212px"
               onChangeComplete={this.handleSnakeColor}
             />
+=======
+            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor} />
+>>>>>>> 978c64e019669147135a7be517d85099c3cb6aa1
           </div>
         </div>
 
@@ -456,7 +529,12 @@ class SnakeGame extends React.Component {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
     );
+=======
+
+    )
+>>>>>>> 978c64e019669147135a7be517d85099c3cb6aa1
   }
 }
 
