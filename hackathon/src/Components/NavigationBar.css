@@ -42,5 +42,11 @@
 @media (max-width: 600px) {
 	.signupButton{
         margin-top: 20px;
+        margin-left: 0px;
+        align-self: center;
+    }
+    .searchBox{
+        width: 80%;
+        align-self: center;
     }
 }
