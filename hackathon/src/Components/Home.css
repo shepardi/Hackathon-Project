@@ -1,0 +1,29 @@
+#banner{
+    margin-top: 10vh;
+    background-color: rgba(223, 198, 137, 0.219);
+    border: 1px dashed black;
+    border-radius: 25px;
+    height: 40vh;
+    position: relative;
+    overflow:hidden;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 1.2rem;
+    display:flex;
+}
+
+.center{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+svg{
+    height:100%;
+}
+
+#welcome-header{
+    position:absolute;
+    top: 40%;
+    right: 20%;
+    color:rgb(248, 142, 61);
+}

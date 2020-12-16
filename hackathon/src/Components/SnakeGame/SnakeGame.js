@@ -1,7 +1,7 @@
 import React from 'react'
 import './SnakeGame.css'
 import GameOver from './GameOver.js'
-import {GithubPicker} from 'react-color'
+import { GithubPicker } from 'react-color'
 
 class SnakeGame extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class SnakeGame extends React.Component {
       directionChanged: false,
       isGameOver: false,
       snakeColor: '#B80000',
-      appleColor: '#B80000' ,
+      appleColor: '#B80000',
       score: 0,
       highScore: Number(localStorage.getItem('snakeHighScore')) || 0,
       newHighScore: false,
@@ -352,20 +352,27 @@ class SnakeGame extends React.Component {
   }
 
   handleAppleColor = (color, event) => {
-    this.setState({appleColor: color.hex})
+    this.setState({ appleColor: color.hex })
   }
 
   handleSnakeColor = (color, event) => {
-    this.setState({snakeColor: color.hex})
+    this.setState({ snakeColor: color.hex })
   }
 
   render() {
     // Game over
     if (this.state.isGameOver) {
       return (
-        <div id='game-screen'>
-          <div id='profile'>
-            <h1>Profile/Leaderboard goes here</h1>
+        <div>
+          <div className='color-picker'>
+            <div id='colors-1'>
+              <h3>Apple Color</h3>
+              <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor} />
+            </div>
+            <div id='colors-2'>
+              <h3>Snake Color</h3>
+              <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor} />
+            </div>
           </div>
           <div>
             <GameOver
@@ -374,28 +381,25 @@ class SnakeGame extends React.Component {
               highScore={this.state.highScore}
               newHighScore={this.state.newHighScore}
               score={this.state.score}
-          />
+            />
           </div>
-          <div className='color-picker'>
-            <div id='colors-1'>
-              <h3>Apple Color</h3>
-              <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor}/>
-            </div>
-            <div id='colors-2'>
-              <h3>Snake Color</h3>
-              <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor}/>
-            </div>
-        </div>
         </div>
 
-        
+
       )
     }
 
     return (
-      <div id='game-screen'>
-        <div id='profile'>
-          <h1>Profile/Leaderboard goes here</h1>
+      <div>
+        <div className='color-picker'>
+          <div id='colors-1'>
+            <h3>Apple Color</h3>
+            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor} />
+          </div>
+          <div id='colors-2'>
+            <h3>Snake Color</h3>
+            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor} />
+          </div>
         </div>
         <div
           id='GameBoard'
@@ -412,8 +416,8 @@ class SnakeGame extends React.Component {
                 style={{
                   width: this.state.blockWidth,
                   height: this.state.blockHeight,
-                  left: snakePart.Xpos-3,
-                  top: snakePart.Ypos-3,
+                  left: snakePart.Xpos - 3,
+                  top: snakePart.Ypos - 3,
                   background: this.state.snakeColor,
                 }}
               />
@@ -424,8 +428,8 @@ class SnakeGame extends React.Component {
             style={{
               width: this.state.blockWidth,
               height: this.state.blockHeight,
-              left: this.state.apple.Xpos-3,
-              top: this.state.apple.Ypos-3,
+              left: this.state.apple.Xpos - 3,
+              top: this.state.apple.Ypos - 3,
               background: this.state.appleColor,
             }}
           />
@@ -434,18 +438,8 @@ class SnakeGame extends React.Component {
             {this.state.score}
           </div>
         </div>
-        <div className='color-picker'>
-          <div id='colors-1'>
-            <h3>Apple Color</h3>
-            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor}/>
-          </div>
-          <div id='colors-2'>
-            <h3>Snake Color</h3>
-            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor}/>
-          </div>
-        </div>
       </div>
-      
+
     )
   }
 }

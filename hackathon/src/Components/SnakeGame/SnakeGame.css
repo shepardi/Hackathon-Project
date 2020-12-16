@@ -44,13 +44,9 @@
 
 }
 
-#profile{
-	width: 30%;
-}
-
 .color-picker{
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	margin-top: 10px;
 	margin-bottom: 10px;

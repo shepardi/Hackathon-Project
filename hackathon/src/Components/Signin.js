@@ -1,34 +1,30 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './SignupAndSignin.css';
 
 const signinUrl = `https://backend-social-2021.herokuapp.com/login`;
 function Signin({ setUsername, setLoggedIn }) {
 	const [info, setInfo] = useState({
-		username: '',
+		name: '',
 		password: '',
 	});
 	const [wrongInput, setWrongInput] = useState(false);
+	const data = new FormData();
+	data.append('username', info.name);
+	data.append('password', info.password);
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		fetch(signinUrl, {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(info),
+			body: data,
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				localStorage.setItem('token', res.token);
-				localStorage.setItem('user', res.user.name);
-				localStorage.setItem('userId', res.user.id);
-				return res;
-			})
-			.then((res) => {
-				if (res.token) {
+				if (res.username) {
 					setLoggedIn(true);
+					setUsername(res.username);
+					localStorage.setItem('username', res.username);
 					window.location.replace('/');
 				}
 			})
@@ -40,12 +36,13 @@ function Signin({ setUsername, setLoggedIn }) {
 			});
 	};
 	const handleChange = (event) => {
+		event.preventDefault();
 		let targetName = event.target.name;
 		let value = event.target.value;
-		if (targetName === 'username') {
-			setInfo({ username: value, password: info.password });
+		if (targetName === 'name') {
+			setInfo({ name: value, password: info.password });
 		} else if (targetName === 'password') {
-			setInfo({ password: value, email: info.email });
+			setInfo({ password: value, name: info.name });
 		}
 	};
 	return (
@@ -55,9 +52,9 @@ function Signin({ setUsername, setLoggedIn }) {
 			<input
 				className='control'
 				type='text'
-				name='username'
-				value={info.email || ''}
-				placeholder='User Name'
+				name='name'
+				value={info.name || ''}
+				placeholder='Name'
 				onChange={handleChange}
 			/>
 			<input
@@ -72,7 +69,7 @@ function Signin({ setUsername, setLoggedIn }) {
 				Submit
 			</button>
 			<p className='bottomText'>
-				Don't have an account? <Link to='/signin'>Sign in</Link>
+				Don't have an account? <Link to='/signup'>Sign Up</Link>
 			</p>
 		</Form>
 	);
