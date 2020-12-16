@@ -38,7 +38,7 @@ class SnakeGame extends React.Component {
 
   initGame() {
     // Game size initialization
-    let percentageWidth = this.props.percentageWidth || 50
+    let percentageWidth = this.props.percentageWidth || 40
     let width =
       document.getElementById('GameBoard').parentElement.offsetWidth *
       (percentageWidth / 100)
@@ -363,17 +363,10 @@ class SnakeGame extends React.Component {
     // Game over
     if (this.state.isGameOver) {
       return (
-        <div>
-          <div className='color-picker'>
-          <div id='colors-1'>
-            <h3>Apple Color</h3>
-            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor}/>
+        <div id='game-screen'>
+          <div id='profile'>
+            <h1>Profile/Leaderboard goes here</h1>
           </div>
-          <div id='colors-2'>
-            <h3>Snake Color</h3>
-            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor}/>
-          </div>
-        </div>
           <div>
             <GameOver
               width={this.state.width}
@@ -383,6 +376,16 @@ class SnakeGame extends React.Component {
               score={this.state.score}
           />
           </div>
+          <div className='color-picker'>
+            <div id='colors-1'>
+              <h3>Apple Color</h3>
+              <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor}/>
+            </div>
+            <div id='colors-2'>
+              <h3>Snake Color</h3>
+              <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor}/>
+            </div>
+        </div>
         </div>
 
         
@@ -390,16 +393,9 @@ class SnakeGame extends React.Component {
     }
 
     return (
-      <div>
-        <div className='color-picker'>
-          <div id='colors-1'>
-            <h3>Apple Color</h3>
-            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor}/>
-          </div>
-          <div id='colors-2'>
-            <h3>Snake Color</h3>
-            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor}/>
-          </div>
+      <div id='game-screen'>
+        <div id='profile'>
+          <h1>Profile/Leaderboard goes here</h1>
         </div>
         <div
           id='GameBoard'
@@ -438,7 +434,16 @@ class SnakeGame extends React.Component {
             {this.state.score}
           </div>
         </div>
-
+        <div className='color-picker'>
+          <div id='colors-1'>
+            <h3>Apple Color</h3>
+            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleAppleColor}/>
+          </div>
+          <div id='colors-2'>
+            <h3>Snake Color</h3>
+            <GithubPicker triangle='hide' width="212px" onChangeComplete={this.handleSnakeColor}/>
+          </div>
+        </div>
       </div>
       
     )

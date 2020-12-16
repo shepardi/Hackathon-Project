@@ -2,6 +2,7 @@
 	position: relative;
 	margin: auto;
 	border-style: solid;
+	margin-bottom: 30px;
 }
 
 #GameBoard .Block {
@@ -34,18 +35,33 @@
 	font-weight: bold;
 }
 
-.color-picker{
+#game-screen{
 	display: flex;
 	flex-direction: row;
+	justify-content: space-around;
+	width: 95%;
+	margin: auto;
+
+}
+
+#profile{
+	width: 30%;
+}
+
+.color-picker{
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	flex-grow: 1
 }
 
 #colors-1, #colors-2{
-	text-align:center;
-	margin-left: 10px;
-	margin-right: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 5px;
+	margin: 10px 0;
 	border: 2px solid black;
-	padding: 10px;
 }
