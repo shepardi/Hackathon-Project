@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './SignupAndSignin.css';
 
 const signinUrl = `https://backend-social-2021.herokuapp.com/login`;
@@ -72,7 +72,7 @@ function Signin({ setUsername, setLoggedIn }) {
 				Submit
 			</button>
 			<p className='bottomText'>
-				Don't have an account? <Link to='/signin'>Sign in</Link>
+				Don't have an account? <Link to='/signup'>Sign Up</Link>
 			</p>
 		</Form>
 	);

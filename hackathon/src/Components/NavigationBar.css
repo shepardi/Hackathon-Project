@@ -2,11 +2,45 @@
     display: flex;
     justify-content: space-between;
     background-color: #C4C4C4;
+    align-items: center;
 }
 .searchBox{
     padding: 7px;
     border-radius: 20px;
     border:none;
     width: 60%;
-    height: 30px;
+    height: 27px;
+    text-align: end;
+    max-width: 700px;
+}
+.logo{
+    margin-right: 70px;
+    margin-left: 70px;
+}
+.signupButton{
+    background-color: white;
+    font-size: small;
+    font-weight: bold;
+    width: 100px;
+    color:black;
+    border-radius: 9px;
+    margin-left: 40px;
+    text-align: center;
+    padding: 5px;
+    font-size: 12px;
+}
+.userIcon{
+    margin-left: 40px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+}
+
+@media (max-width: 600px) {
+	.signupButton{
+        margin-top: 20px;
+    }
 }

@@ -3,6 +3,9 @@
 	border: 0.5px solid #000000 !important;
     border-radius: 15px;
 	padding: 7px;
+	width:90%;
+	max-width: 400px;
+	align-self: center;
 }
 
 .form {
